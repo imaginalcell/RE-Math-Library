@@ -25,43 +25,43 @@ inline float dot(const Vector2 &ls, const Vector2 &rs)
 //Addition and Subtraction
 inline Vector2 operator+(const Vector2 &ls, const Vector2 &rs)
 {
-	return Vector2(ls + rs);
+	return Vector2{ ls.x + rs.x, ls.y + rs.y };
 }
 
 inline Vector2 operator-(const Vector2 &ls, const Vector2 &rs)
 {
-	return Vector2(ls - rs);
+	return Vector2{ ls.x - rs.x, ls.y - rs.y };
 }
 
-inline Vector2 operator+=(const Vector2 &ls, const Vector2 &rs)
+inline Vector2 &operator+=(Vector2 &ls, const Vector2 &rs)
 {
-	return Vector2(ls += rs);
+	return ls = ls + rs;
 }
 
-inline Vector2 operator-=(const Vector2 &ls, const Vector2 &rs)
+inline Vector2 &operator-=(Vector2 &ls, const Vector2 &rs)
 {
-	return Vector2(ls -= rs);
+	return ls = ls - rs;
 }
 
 //Scalar
-inline Vector2 operator*(const Vector2 &ls, const Vector2 &rs)
+inline Vector2 operator*(const Vector2 &ls, float rs)
 {
-	return Vector2(ls * rs);
+	return Vector2{ ls.x * rs, ls.y * rs };
 }
 
-inline Vector2 operator/(const Vector2 &ls, const Vector2 &rs)
+inline Vector2 operator/(const Vector2 &ls, float rs)
 {
-	return Vector2(ls / rs);
+	return Vector2{ ls.x / rs, ls.y / rs };
 }
 
-inline Vector2 operator*=(const Vector2 &ls, float rs)
+inline Vector2 &operator*=(Vector2 &ls, float rs)
 {
-	return Vector2(ls *= rs);
+	return ls = ls * rs;
 }
 
-inline Vector2 operator/=(const Vector2 &ls, float rs)
+inline Vector2 &operator/=(Vector2 &ls, float rs)
 {
-	return Vector2(ls /= rs);
+	return ls = ls / rs;
 }
 
 //Relational
@@ -103,7 +103,7 @@ inline bool operator>=(const Vector2 &ls, const Vector2 &rs)
 //Normal
 inline Vector2 normal(const Vector2 &a)
 {
-	return a / a.magnitude;
+	return a / a.magnitude();
 }
 
 //Perpendicular 2D only
